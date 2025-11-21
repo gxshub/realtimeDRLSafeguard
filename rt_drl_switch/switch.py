@@ -131,7 +131,10 @@ class Switch:
                                (np.sum(ep_rwrds) / num_episodes_actual) * 40 / (40 - WARMUP_STEPS)))
             logger.log("Crash rate (episode): {:.2%}".format(num_crashes / num_episodes_actual))
             logger.log("Crash rate (timestep): {:.4%}".format(num_crashes / np.sum(ep_lengths)))
-            if type(self.delay_time) is not float:
+            if pri_ctrl_only:
+                logger.log("[probabilities] - switch to pri or sec ctrls - primary: {}, secondary: {}" \
+                    .format(1.0, 0.0))
+            elif type(self.delay_time) is not float:
                 logger.log("[probabilities] - switch to pri or sec ctrls - primary: {}, secondary: {}" \
                            .format(
                     self.delay_time.cumulative_probability_below(float(params["thresh"]["time_delay"])),

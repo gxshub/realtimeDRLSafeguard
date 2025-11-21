@@ -12,88 +12,79 @@ export LD_LIBRARY_PATH
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.05
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.05
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.10
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.1
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.15
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.15
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.2
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.2
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.25
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.25
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.3
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.3
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.35
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.35
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.4
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.4
-
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.45
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
+-p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.45
-
-python experiment.py \
-configs/HighwayEnv/env_continuous_v2.json \
--a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--s configs/HighwayEnv/controller/ttc_based.yaml \
--p -e 500 -o run1 \
--d 0.5
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 500 -o run1r \
+-m 0.5

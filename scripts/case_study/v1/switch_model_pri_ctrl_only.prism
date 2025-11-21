@@ -1,0 +1,96 @@
+
+dtmc
+
+// constants
+const int MAX_CT=20; //max number of calls in total
+const int MIN_CC=4; //min num of consecutive calls to a sec controller 
+
+// metric probabilities
+// 1st group
+const double lln0 = 0.08561583834608422;
+// 2ed group
+const double lly0 = 0.3552239677626584;
+// 3rd group
+const double lgn0 = 0.050808853588740294;
+// 4th group
+const double lgy0 = 0.408368860596858;
+// 5th group
+const double gln0 = 0.0033872569059160192;
+// 6th group
+const double gly0 = 0.004204870641826783;
+// 7th group
+const double ggn0 = 0.014103836944460667;
+// 8th group
+const double ggy0 = 1-lln0-lly0-lgn0-lgy0-gln0-gly0-ggn0;
+
+module swtich
+	
+    //switch location variable
+    loc : [0..4] init 0; 
+    // 0: initialise, 1: determinie config, 2: select controller, 3: run controller, 4: done
+    
+    // controller
+    ctrl: [0..1] init 0;
+    // 0: primary (default), 1: secondary
+
+    //configuration
+    conf: [0..4] init 0;
+    // 0: unspecified config, 1..4: configs
+
+    //total count of calls
+    ct: [0..MAX_CT] init 0;
+
+    // count of consecutive calls to a secondary control
+    cc: [0..MAX_CT] init 0;
+
+    //safety metrics
+    headway: [0..1] init 1;
+    ttc: [0..1] init 1;
+    onlane: [0..1] init 1;
+    // 0: unsafe, 1: safe 
+
+    // determinie configuration
+    [] (loc=0) & (conf=0) & (ct < MAX_CT) -> (loc'=1) & (conf'=0);
+
+    // switch to the primary controller or a secondary controller
+    [] (loc=1) & (conf=0) -> 1.0 : (loc'=2) & (ctrl'=0); // primary controller only
+
+    // run the controller    
+    [] (loc=2) & (conf=0) & (ct < MAX_CT) & (cc < MAX_CT) -> 
+        lln0 : (loc'=3) & (headway'=0) & (ttc'=0) & (onlane'=0) & (ct'=ct+1) & (cc'=cc+1) + 
+        lly0 : (loc'=3) & (headway'=0) & (ttc'=0) & (onlane'=1) & (ct'=ct+1) & (cc'=cc+1) + 
+        lgn0 : (loc'=3) & (headway'=0) & (ttc'=1) & (onlane'=0) & (ct'=ct+1) & (cc'=cc+1) + 
+        lgy0 : (loc'=3) & (headway'=0) & (ttc'=1) & (onlane'=1) & (ct'=ct+1) & (cc'=cc+1) + 
+        gln0 : (loc'=3) & (headway'=1) & (ttc'=0) & (onlane'=0) & (ct'=ct+1) & (cc'=cc+1) + 
+        gly0 : (loc'=3) & (headway'=1) & (ttc'=0) & (onlane'=1) & (ct'=ct+1) & (cc'=cc+1) + 
+        ggn0 : (loc'=3) & (headway'=1) & (ttc'=1) & (onlane'=0) & (ct'=ct+1) & (cc'=cc+1) + 
+        ggy0 : (loc'=3) & (headway'=1) & (ttc'=1) & (onlane'=1) & (ct'=ct+1) & (cc'=cc+1);
+                        
+    
+    // for primary controller, return
+    [] (loc=3) & (ctrl=0) -> (loc'=4) & (headway'=1) & (ttc'=1) & (onlane'=1) & (cc'=0);
+            
+    // reset
+    [] (loc=4) -> (loc'=0) & (conf'=0) & (ctrl'=0) & (headway'=1) & (ttc'=1) & (onlane'=1) & (cc'=0);
+    
+    // terminal state, loop
+    [] (loc=0) & (ct = MAX_CT) -> (loc'=0) & (ct' = MAX_CT);
+    
+endmodule
+
+// rewards
+rewards "ctrl_cost"
+    [] loc=2 & ctrl=0 : 1/MAX_CT;
+endrewards
+
+rewards "headway_cost"
+    [] loc=3 & headway=0 : 1/MAX_CT;
+endrewards
+
+rewards "ttc_cost"
+    [] loc=3 & ttc=0 : 1/MAX_CT;
+endrewards
+
+rewards "onlane_cost"
+    [] loc=3 & onlane=0 : 1/MAX_CT;
+endrewards

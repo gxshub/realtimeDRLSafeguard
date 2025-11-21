@@ -19,6 +19,7 @@ _build
 
 # Outputs
 **/out/*
+scripts/out/*
 
 #MISC
 misc/*

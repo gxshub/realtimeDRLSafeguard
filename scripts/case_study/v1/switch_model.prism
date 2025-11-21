@@ -3,9 +3,9 @@ mdp
 
 // constants
 const int MAX_CT=20; //max number of calls in total
-const int MIN_CC=4; //min num of consecutive calls to a sec constroller 
+const int MIN_CC=4; //min num of consecutive calls to a sec controller 
 
-// switch probabilities (to the primary controller)
+// switch probablities (to the primary controller)
 const double sw1 = 0.39348720457881686; 
 const double sw2 = 0.6107399723416943; 
 const double sw3 = 0.39348720457881686; 

@@ -11,6 +11,7 @@ Options:
   -w --switch <file>       Switch configuration
   -s --sctrl <file>        Secondary controllers configuration
   -r --random-delay <file> Parameters for random delay time
+  -m --avg-delay <value>   Average delay value [default: 0.2]
   -d --deterministic-delay <value>  Deterministic delay time
   -e --episodes <num>      Number of episodes [default: 4].
   -o --output-dir <str>    Output (sub) direction
@@ -46,6 +47,7 @@ def main():
     switch_config_file = opts['--switch'] if opts['--switch'] else DEFAULT_SWITCH_CONFIG_FILE
     sec_ctrl_config_file = opts['--sctrl']
     rand_delay_time_param_file = opts['--random-delay']
+    avg_delay_time = float(opts['--avg-delay'])
     det_delay_time = float(opts['--deterministic-delay']) if opts['--deterministic-delay'] else None
     n_episodes = int(opts['--episodes'])
     dir_name = opts['--output-dir'] if opts['--output-dir'] else 'default'
@@ -94,11 +96,11 @@ def main():
     elif rand_delay_time_param_file is not None:
         # todo
         time_intervals = load_config(rand_delay_time_param_file)
-        delay_time = DelayTimeDistribution.create_from_exp_dist(time_intervals, scale=0.2)
+        delay_time = DelayTimeDistribution.create_from_exp_dist(time_intervals, scale=avg_delay_time)
         logger.log(delay_time.get_distribution())
     else:
         time_intervals = DEFAULT_TIME_INTERVALS
-        delay_time = DelayTimeDistribution.create_from_exp_dist(time_intervals, scale=0.2)
+        delay_time = DelayTimeDistribution.create_from_exp_dist(time_intervals, scale=avg_delay_time)
         logger.log(delay_time.get_distribution())
 
     # Create and run switch

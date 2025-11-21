@@ -15,37 +15,37 @@ python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
 -w configs/HighwayEnv/switch/switch_dc0.yaml \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
 -s configs/HighwayEnv/controller/ttc_based.yaml \
--e 1000
+-e 1000 -o run2v2 -m 0.2
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
 -w configs/HighwayEnv/switch/switch_dc1.yaml \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
 -s configs/HighwayEnv/controller/ttc_based.yaml \
--e 1000
+-e 1000 -o run2v2 -m 0.2
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
 -w configs/HighwayEnv/switch/switch_dc2.yaml \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
 -s configs/HighwayEnv/controller/ttc_based.yaml \
--e 1000
+-e 1000 -o run2v2 -m 0.2
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
 -w configs/HighwayEnv/switch/switch_dc3.yaml \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
 -s configs/HighwayEnv/controller/ttc_based.yaml \
--e 1000
+-e 1000 -o run2v2 -m 0.2
 
 python experiment.py \
 configs/HighwayEnv/env_continuous_v2.json \
 -p \
 -a configs/HighwayEnv/agents/sb3/ddpg.json \
--c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_18_16_34/best_model.zip \
--e 1000
+-c out/highway_env_continuous_actions/stable_baselines3.ddpg.ddpg/2025-02-12_17_35_55/best_model.zip \
+-e 1000 -o run2v2 -m 0.2
