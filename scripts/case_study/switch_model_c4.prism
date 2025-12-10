@@ -1,4 +1,4 @@
-//Switch model with four configurations for pri and sec controllers 
+//Switch model with four configurations for primary and secondary controllers 
 mdp
 
 const int MAX_TS = 40; // max number of timesteps
@@ -14,15 +14,15 @@ const double p2ex=0.3096230158730159;
 const double p3ex=0.1594707520891365;
 const double p4ex=0.30118360559522644;
 //prob of observing low headway
-const double p1hw=0.3188197193234977;
-const double p2hw=0.18572291140630146;
-const double p3hw=0.3132379843672044;
-const double p4hw=0.19226878810246317;
+const double p1hw=0.3159133058377391;
+const double p2hw=0.18382917993193545;
+const double p3hw=0.31104828427296416;
+const double p4hw=0.19062850269280188;
 //prob of observing low ttc
-const double p1ttc=0.06579566529188695;
-const double p2ttc=0.029723350532440445;
-const double p3ttc=0.0641110926326293;
-const double p4ttc=0.029443123103419996;
+const double p1ttc=0.06765023389708529;
+const double p2ttc=0.03095839279833132;
+const double p3ttc=0.06632851044958146;
+const double p4ttc=0.030837365701632084;
 //prob of being on lane
 const double p1ol=0.8356630774766796;
 const double p2ol=0.8250356789987924;
@@ -33,13 +33,13 @@ module BaseSwitch
   
   conf: [0..4]; //four configurations
   sm: [0..2] init 0; //main state variable
-  sp: [0..4] init 0; //primary control state varaible
-  ss: [0..5] init 0; //secondary control state varaible
+  sp: [0..4] init 0; //primary control state variable
+  ss: [0..5] init 0; //secondary control state variable
 
-  // select configurations 
-  [conf] sm=0 -> (sm'=1) & (conf'=1);
-  [conf] sm=0 -> (sm'=1) & (conf'=2);
-  [conf] sm=0 -> (sm'=1) & (conf'=3);
+  // conf 4 only 
+  //[conf] sm=0 -> (sm'=1) & (conf'=1);
+  //[conf] sm=0 -> (sm'=1) & (conf'=2);
+  //[conf] sm=0 -> (sm'=1) & (conf'=3);
   [conf] sm=0 -> (sm'=1) & (conf'=4);
 
   [] sm=1 & (sp=0) & (ss=0) & conf=1 -> (1-p1et) : (sp'=1) + p1et : (ss'=1);
